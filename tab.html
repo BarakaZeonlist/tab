@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+   
+   <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #7F8C8D;
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-info {
+            font-size: 14px;
+            color: #D2DBDB;
+        }
+        .tabs-container {
+            background-color: #7F8C8D;
+        }
+        .tabs {
+            display: flex;
+            max-width: 278px; /* 2 * 139 */
+            width: 100%;
+            font-family: "Nunito Sans", serif;
+        }
+        .tab {
+            flex: 1;
+            max-width: 139px;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            border-bottom: 3px solid transparent;
+            background-color: #D2D7D7;
+            color: #1C1C1C;
+            font-weight: 400;
+            font-family: "Nunito Sans", serif;
+        }
+        .tab.active {
+            background-color: #ffffe0;
+            border-bottom: 3px solid #7DD9D2;
+            color: #000;
+            font-weight: 800;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .icons-container {
+            width: 285px;
+        }
+        .icons {
+            display: flex;
+            gap: 10px;
+        }
+        .in-patient{
+            color: #181A1B;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="user-info">
+            John Doe | 000-000 | Female | Alive | Cash | Out Patient
+        </div>
+        <div class="icons-container">
+            <div class="icons">
+                <!-- <span>🔒</span>
+                <span>📧</span>
+                <span>⏰</span> -->
+            </div>
+        </div>
+    </div>
+    <div class="tabs-container">
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('in-patient')">In Patient</div>
+            <div class="tab" onclick="switchTab('out-patient')">Out Patient</div>
+        </div>
+    </div>
+    <div id="in-patient" class="tab-content active">
+        <h2 class="in-patient">In Patient</h2>
+      
+    </div>
+    <div id="out-patient" class="tab-content">
+        <h2>Out Patient</h2>
+      
+    </div>
+    <script>
+        function switchTab(tabId) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            document.querySelector(`.tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
